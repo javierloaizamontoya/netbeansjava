@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/10/2020 10:53:29 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Empleado" table="empleado" schema="public" optimistic-lock="version">
+        <id name="emplDoc" type="string">
+            <column name="empl_doc" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="empresa" class="pojos.Empresa" fetch="select">
+            <column name="empl_empr" not-null="true" />
+        </many-to-one>
+        <property name="emplNombre" type="string">
+            <column name="empl_nombre" not-null="true" />
+        </property>
+        <property name="emplEdad" type="int">
+            <column name="empl_edad" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

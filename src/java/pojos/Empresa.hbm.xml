@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/10/2020 10:53:29 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojos.Empresa" table="empresa" schema="public" optimistic-lock="version">
+        <id name="empNombre" type="string">
+            <column name="emp_nombre" />
+            <generator class="assigned" />
+        </id>
+        <property name="empDir" type="string">
+            <column name="emp_dir" not-null="true" />
+        </property>
+        <property name="empTel" type="string">
+            <column name="emp_tel" not-null="true" />
+        </property>
+        <set name="empleados" table="empleado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="empl_empr" not-null="true" />
+            </key>
+            <one-to-many class="pojos.Empleado" />
+        </set>
+    </class>
+</hibernate-mapping>
